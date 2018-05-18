@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+<div data-role="page">
+  <div data-role="header">
+    <h1>Crypto Currency Wallet Guide</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Open Wallet</a>
+
+    <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
+      <form method="post" action="javascript:myFunction()">
+        <div>
+          <h3>Open Cryptocurrency wallet</h3>
+          <label for="usrnm" class="ui-hidden-accessible">Private Key:</label>
+          <input type="text" pattern="Green Dinosaur Jumped Over The High Fence Please Dont Share Your Seed With Anyone" name="user" id="usrnm" placeholder="Enter Private key">
+          <label for="pswd" class="ui-hidden-accessible">Password:</label>
+          <input type="submit" data-inline="true" value="Open Wallet">
+        </div>
+      </form>
+  </div>
+  <div id="info"> To Open your wallet you will need to use a seed to open. <br> In this Example your Seed is:  </br>
+  <br><b>Green Dinosaur Jumped Over The High Fence Please Dont Share Your Seed With Anyone</br> </b>
+  <br>You will also need to keep your private key somewhere safe, In this Example your Private Key is:</br>
+  <br><b> "0xab1d3fgh1jklmn0pqr5tuvw8yz"</b></br></div>
+    </div>
+  
+  <div id="myDIV" >
+<h1>Wallet Balance</h1>
+<p>Your wallet is now open.</p> 
+<p>
+
+<form id="frm1"> Amount of coins <p id="demo"></p> 
+<label for= "t"> How many Coins would you like to send? - This is where you enter the amount of coins to send.  </label>
+<input type="hidden" id="b" value="100">
+
+<input type="number" id="t" value="50">
+
+<label for= "c"> Please enter the address to send too <br> Here is where you enter the address you would like to send the coins.</br> <br> The format bellow is for Bitcoin, Each Cryptocurrency has its own address format </br> </label>
+<input value="34yfnv6ZWnQHDCmjKDzcamomL7aFKexNej" type="text" id="c">
+
+<label for= "p"> Please enter your private key <br>You will need to "sign" for the transaction in most cases using your private key.  </br></label>
+<input value="0xab1d3fgh1jklmn0pqr5tuvw8yz" type="text" id="c">
+<output name="Sent" for="a b"></output>
+
+<input type="button" id ="Sbutton" value="Submit" onclick="msg()">
+</form>
+<p id="Submitted"></p>
+
+</div>
+
+
+<script>
+
+ 
+document.getElementById("demo").innerHTML = 100;
+
+
+function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display !== "none") {
+        x.style.display = 'none';
+    } else {
+        x.style.display = 'block';
+    }
+    }
+
+function msg() {
+    var x = document.getElementById("frm1");
+    var text = "";
+    var i;
+    var addy ="";
+    var amount = ""
+    var remaining = ""
+    for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value + "<br>";
+   
+    }
+    addy = "too: " + x.elements[2].value
+    amount = "Congratulations you have just sent " + x.elements[1].value + "  Cryptocoins "
+    remaining = x.elements[0].value - x.elements[1].value + "Cryptocoins remaining"
+    
+    document.getElementById("Submitted").innerHTML = amount + addy;
+  	document.getElementById("demo").innerHTML = remaining;
+}
+window.onload = function() {
+  document.getElementById('myDIV').style.display = 'none';
+};
+
+
+</script>
+   
+  </div>
+</div> 
+
+</body>
+</html>
